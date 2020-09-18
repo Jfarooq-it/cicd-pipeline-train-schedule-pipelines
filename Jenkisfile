@@ -7,5 +7,14 @@ pipeline {
                 echo 'Hello World'
             }
         }
+        stage('Gradle Build') {
+            steps {
+                echo 'Running Gradle Automation'
+                sh './gradlew build --no-daemon'
+                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+            }
+        }
+        
+        
     }
 }
